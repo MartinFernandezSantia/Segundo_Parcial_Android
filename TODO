@@ -1,0 +1,52 @@
+Aplicacion para el control de tickets
+
+Tipos de usuarios: administrador - tecnico - trabajador
+
+Se accede usando un numero de identificacion y una contraseña.
+
+El ticket se compone de: titulo - descripcion - estado (por defecto "No atendido") -
+trabajador que lo este atendiendo
+
+Los trabajadores pueden ver una lista de sus tickets que no esten finalizados, en la que se
+muestra el estado y el trabajador asignado.
+
+Los tecnicos no crean tickets, solo los atienden.
+
+Al crearse el ticket aparecerá en la lista de tickets pendientes que todos los técnicos pueden ver
+
+Cuando un tecnico toma un ticket, este pasa al estado de "Atendido"
+
+Un técnico sólo puede estar atendiendo hasta 3 tickets, luego del cual se le rechazarán todos
+los pedidos de atender tickets
+
+Al resolver un ticket, lo marcará como "Resuelto", en espera de que el trabajador que lo creó
+confirme que el problema fue resuelto
+
+Si se produce la confirmacion, el ticket pasa a "Finalizado", de otro modo pasara a "Reabierto"
+en espera de que otro técnico lo atienda, y se le marcará una falla al técnico que lo haya marcado como resuelto
+
+Cuando un técnico recibe 3 fallas, se le bloqueará el acceso al sistema y deberá pedir al
+administrador que lo habilite nuevamente
+
+Si un técnico tomó un ticket, pero no pudo resolverlo, puede pedir al administrador que reabra
+el ticket, quitándoselo de su lista de tickets atendidos, y recibiendo una marca por
+haberlo retornado. Si ya tenía una marca, se le borra y recibe una falla
+
+Si un técnico resuelve un ticket reabierto, se le limpia una falla, si es que tiene.
+
+El administrador tiene el trabajo de agregar, bloquear y desbloquear trabajadores y técnicos y
+reabrir tickets que estén siendo atendidos a solicitud del técnico que lo tomó
+
+Al crear un nuevo usuario, la contraseña se asignará idéntica a su ID, y estarán forzados a
+modificarla antes de entrar al sistema
+
+Si alguno olvidara su contraseña, puede pedirle al administrador un blanqueo, que deja la
+contraseña igual a su ID, forzando también a que haya un cambio de clave
+
+El administrador también puede ver la cantidad de fallas y marcas de retorno de los técnicos, y
+la lista de tickets y su información (título, descripción, trabajador que lo creó, estado,
+técnico que lo esté atendiendo, si fue reabierto y quién lo había atendido antes), filtrándolos por estado.
+
+Todos los usuarios pueden cambiar su contraseña en cualquier momento.
+
+Considerar hacer ventanas individuales para cada tipo de usuario
